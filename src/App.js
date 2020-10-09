@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import LoadConfirmation from './components/LoadConfirmation';
 import RealTime from './components/RealTime';
+import YourLoads from './components/YourLoads';
 
 import { 
   BrowserRouter as Router, 
@@ -26,6 +27,7 @@ function App() {
               <Route exact path='/signup' component={Signup}></Route>
               <Route exact path='/loadconfirmation' component={LoadConfirmation}></Route>
               <Route exact path='/realtime' component={RealTime}></Route>
+              <Route exact path='/yourloads' component={YourLoads}></Route>
             </Switch>
           </div>
 

@@ -38,7 +38,8 @@ function Header() {
                                     <li><Link to="/login">Login</Link></li>
                                     <li><Link to="/signup">Sign Up</Link></li>
                                     <li><Link to="/loadconfirmation">Load Confirmation</Link></li>
-                                    <li><Link to="/realtime">Real Time Tracking</Link></li>
+                                    <li><Link to="/realtime">Real Time Tracking</Link></li> 
+                                    <li><Link to="/yourloads">Your Loads</Link></li>
                                  </ul>
                             </div>
                         </div>
@@ -51,6 +52,7 @@ function Header() {
                     <Link to="/signup" onClick={() => setMenuToggle(!menuToggle)}>Sign Up</Link>
                     <Link to="/loadconfirmation" onClick={() => setMenuToggle(!menuToggle)}>Load Confirmation</Link>
                     <Link to="/realtime" onClick={() => setMenuToggle(!menuToggle)}>Real Time Tracking</Link>
+                    <Link to="/yourloads" onClick={() => setMenuToggle(!menuToggle)}>Your Loads</Link>
                 </div>
 
             </div>
