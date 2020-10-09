@@ -1,0 +1,36 @@
+.time .card{
+    margin-top: 15%;
+}
+
+.time h2{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.time textarea 
+{
+    color: var(--color-black);
+    border-radius: 5px;
+    padding: 10px 0 10px 10px;
+    width: 100%;
+    height: auto;
+    margin-top: 7%;
+    font-size: 17px;
+}
+
+.time textarea::placeholder
+{
+    color: rgb(138, 138, 138);
+}
+
+.time select{
+    color: var(--color-black);
+    border-radius: 5px;
+    padding: 8px 0 8px 10px;
+    width: 100%;
+    height: auto;
+    margin-top: 5%;
+    font-size: 17px;
+    color: rgb(138, 138, 138);
+}

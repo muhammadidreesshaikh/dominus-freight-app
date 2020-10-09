@@ -66,7 +66,7 @@ class Signup extends React.Component {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> 
         );
     }
 }
