@@ -1,0 +1,22 @@
+.load .card{
+    border: 0;
+    margin-top: 15%;
+}
+
+.load .card h3{
+    font-size: 25px;
+}
+
+.load .card p{
+    color: var(--color-gry);
+    font-size: 14px;
+    padding-top: 7px;
+}
+
+.load input{
+    
+}
+
+.load label{
+    
+}

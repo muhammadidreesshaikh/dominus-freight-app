@@ -1,0 +1,174 @@
+.header
+{
+    background-color: var(--color-blue);
+    padding: 1% 0;
+}
+
+/* .header .logo img
+{
+    width: 35%;
+    height: auto;
+} */
+
+.header .logo 
+{
+    padding-top: 2px;
+}
+
+.header .logo a
+{
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.header .nav
+{
+    float: right;
+    padding-top: 2%;
+}
+
+.header .nav ul
+{
+    list-style: none;
+    display: flex;
+}
+
+.header .nav li 
+{
+    padding: 0 15px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.header .nav a
+{
+    color: var(--color-white);
+    text-align: center;
+    padding: 12px;
+    transition: 0.5s;
+}
+
+.header .nav li a:hover
+{
+    background-color: #413698;
+    opacity: 0.5s;
+    transition: 0.5s;
+}
+
+
+.mobile-menu-toggle {
+    display: inline-block;
+    display: none;
+    cursor: pointer;
+    color: var(--color-black);
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    z-index: 2;
+}
+
+.mobile-menu-toggle:hover { color: var(--color-black); }
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--color-black);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+    background-color: var(--color-white);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+    background-color: var(--color-white);
+}
+
+/* menu desktop and mobile switching on responsive  */
+
+.desktop-menu {
+    display: block;
+}
+
+/* sidemenu */
+
+.sidenav 
+{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -100%;
+    background-color: var(--color-blue);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav.open {
+    left: 0;
+}
+
+.sidenav.close {
+    left: -100%;
+}
+
+.sidenav a 
+{
+    padding: 10px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--color-white);
+    display: block;
+    text-align: center;
+}
+
+.sidenav a:hover { 
+    color: var(--color-white); 
+
+}
+
+/* menu desktop and mobile switching on responsive  */
+
+@media only screen and (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .header{
+       padding: 0;
+    }
+    
+    .slider{
+        height: 55vh;
+        padding-top: 10%;
+    }
+
+    .slider .left{
+        padding-top: 15%;
+    }
+
+    .slider .left h1{
+        font-size: 35px;
+    } 
+}
+
+@media only screen and (max-width: 600px) {
+    .slider .right img{
+        display: none;
+    }
+}
