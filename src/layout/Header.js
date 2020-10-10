@@ -46,6 +46,7 @@ function Header() {
                                     <li><Link to="/loaddetails">Load Details</Link></li> 
                                     <li><Link to="/shipper">Shipper</Link></li> 
                                     <li><Link to="/allpayment">All Payment</Link></li>
+                                    <li><Link to="/setting">Setting</Link></li>
                                  </ul>
                             </div>
                         </div>
@@ -90,9 +91,16 @@ function Header() {
                     </Link>
 
                     <Link to="/allpayment" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('All Payment')}}>
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('All Payment')}}> 
                         All Payment 
                     </Link>
+
+                    <Link to="/setting" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Setting')}}> 
+                        Setting 
+                    </Link>
+
+                    
                 </div>
 
             </div>

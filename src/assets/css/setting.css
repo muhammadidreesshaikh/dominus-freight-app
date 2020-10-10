@@ -1,0 +1,23 @@
+.setting .main{
+    margin-top: 8%;
+}
+
+.setting .content{
+    margin: 14% 0 0 5%;
+}
+
+.setting img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.setting h2{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.setting p{
+    color: gray;
+}
+

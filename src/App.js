@@ -10,6 +10,7 @@ import YourLoads from './components/YourLoads';
 import LoadDetails from './components/LoadDetails';
 import Shipper from './components/Shipper';
 import AllPayment from './components/AllPayment';
+import Setting from './components/Setting';
 
 import { 
   BrowserRouter as Router, 
@@ -35,6 +36,7 @@ function App() {
               <Route exact path='/loaddetails' component={LoadDetails}></Route> 
               <Route exact path='/shipper' component={Shipper}></Route>AllPayment
               <Route exact path='/allpayment' component={AllPayment}></Route>
+              <Route exact path='/setting' component={Setting}></Route>
             </Switch>
           </div>
 
