@@ -1,0 +1,26 @@
+.detail .card{
+    margin-top: 15%;
+}
+
+.detail h2{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.detail h4{
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10%;
+}
+
+.detail p{
+    color: var(--color-gry);
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+.detail img{
+    width: 100%;
+    height: auto;
+    margin-top: 5%;
+}
