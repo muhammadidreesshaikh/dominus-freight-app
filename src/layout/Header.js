@@ -6,6 +6,7 @@ import '../assets/css/header.css'
 function Header() {
 
     const [menuToggle, setMenuToggle] = useState(false);
+    const [headerTitle, setHeaderTitle] = useState('');
 
     console.log(menuToggle);
 
@@ -21,6 +22,8 @@ function Header() {
                     <div className="bar2"></div>
                     <div className="bar3"></div>
                 </div>
+
+                <h4 className="header-title">{headerTitle}</h4>
 
                 <div className="desktop-menu container">
                     <div className="row">
@@ -40,7 +43,8 @@ function Header() {
                                     <li><Link to="/loadconfirmation">Load Confirmation</Link></li>
                                     <li><Link to="/realtime">Real Time Tracking</Link></li> 
                                     <li><Link to="/yourloads">Your Loads</Link></li>
-                                    <li><Link to="/loaddetails">Load Details</Link></li>
+                                    <li><Link to="/loaddetails">Load Details</Link></li> 
+                                    <li><Link to="/shipper">Shipper</Link></li>
                                  </ul>
                             </div>
                         </div>
@@ -49,12 +53,40 @@ function Header() {
                 </div>
 
                 <div className={"mobile-menu sidenav " + (menuToggle ? 'open' : 'close')}>
-                    <Link to="/login" onClick={() => setMenuToggle(!menuToggle)}>Login</Link>
-                    <Link to="/signup" onClick={() => setMenuToggle(!menuToggle)}>Sign Up</Link>
-                    <Link to="/loadconfirmation" onClick={() => setMenuToggle(!menuToggle)}>Load Confirmation</Link>
-                    <Link to="/realtime" onClick={() => setMenuToggle(!menuToggle)}>Real Time Tracking</Link>
-                    <Link to="/yourloads" onClick={() => setMenuToggle(!menuToggle)}>Your Loads</Link>
-                    <Link to="/loaddetails" onClick={() => setMenuToggle(!menuToggle)}>Load Details</Link>
+                    <Link to="/login" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Login')} }>
+                        Login
+                    </Link>
+
+                    <Link to="/signup" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Sign Up')}}>
+                        Sign Up
+                    </Link>
+
+                    <Link to="/loadconfirmation" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Confirmation')}}>
+                        Load Confirmation
+                    </Link>
+                    
+                    <Link to="/realtime" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Real Time Tracking')}}>
+                        Real Time Tracking
+                    </Link>
+
+                    <Link to="/yourloads" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Your Loads')}}>
+                        Your Loads
+                    </Link>
+
+                    <Link to="/loaddetails" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Details')}}>
+                        Load Details
+                    </Link> 
+
+                    <Link to="/shipper" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Shipper')}}>
+                        Shipper
+                    </Link>
                 </div>
 
             </div>

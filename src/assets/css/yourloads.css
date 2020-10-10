@@ -1,19 +1,19 @@
-.time h2{
+.loads h2{
     font-size: 25px;
     font-weight: bold;
 }
 
-.time h3{
+.loads h3{
     font-size: 25px;
     font-weight: bold;
 }
 
-.time p{
+.loads p{
     color: var(--color-gry);
-    font-size: 14px;
+    font-size: 15px;
 }
 
-.time select{
+.loads select{
     border-radius: 5px;
     padding: 8px 0 8px 10px;
     width: 100%;

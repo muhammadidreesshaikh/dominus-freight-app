@@ -29,25 +29,23 @@ class RealTime extends React.Component {
                     <div className="container">
                         <div className="row justify-content-center">
                             <div className="col-md-4">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h2>Send Update</h2>
+                                <div className="card-body">
+                                    <h2>Send Update</h2>
 
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option>Accident</option>
-                                                <option>Traffic</option>
-                                                <option>Rest Stop</option>
-                                                <option>Help</option>
-                                            </select>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option>Accident</option>
+                                            <option>Traffic</option>
+                                            <option>Rest Stop</option>
+                                            <option>Help</option>
+                                        </select>
 
-                                            <textarea class="form-control" rows="5" placeholder="Your Notes"></textarea>
-                                        </div>
-
-                                        <button type="submit" className="btn btn-primary w-100 mt-4 font-weight-bold">Pickup</button>
-
-                                        <button type="submit" className="btn btn-success w-100 mt-4 font-weight-bold">Delivered</button>
+                                        <textarea class="form-control" rows="5" placeholder="Your Notes"></textarea>
                                     </div>
+
+                                    <button type="submit" className="btn btn-primary w-100 mt-4 font-weight-bold">Pickup</button>
+
+                                    <button type="submit" className="btn btn-success w-100 mt-4 font-weight-bold">Delivered</button>
                                 </div>
                             </div>
                         </div>

@@ -10,6 +10,13 @@
     height: auto;
 } */
 
+.header-title {
+    text-align: center;
+    padding: 15px 0 0 0;
+    font-size: 22px;
+    color: white;
+}
+
 .header .logo 
 {
     padding-top: 2px;
@@ -74,7 +81,7 @@
     width: 35px;
     height: 5px;
     border-radius: 5px;
-    background-color: var(--color-black);
+    background-color: var(--color-white);
     margin: 6px 0;
     transition: 0.4s;
 }
@@ -151,6 +158,7 @@
 
     .header{
        padding: 0;
+       height: 55px;
     }
     
     .slider{
