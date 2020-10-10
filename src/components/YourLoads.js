@@ -30,6 +30,7 @@ class YourLoads extends React.Component {
                         <div className="row justify-content-center">
                             <div className="col-md-4">
                                 <div className="card-body">
+                                       
                                     <div className="row">
                                         <div className="col-6">
                                             <h2>Loads Type</h2>
@@ -65,6 +66,7 @@ class YourLoads extends React.Component {
                                             <p>10-March-2020  (05:00 AM)</p>
                                         </li>
                                     </ul>
+
                                 </div>
                             </div>
                         </div>

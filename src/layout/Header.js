@@ -44,7 +44,8 @@ function Header() {
                                     <li><Link to="/realtime">Real Time Tracking</Link></li> 
                                     <li><Link to="/yourloads">Your Loads</Link></li>
                                     <li><Link to="/loaddetails">Load Details</Link></li> 
-                                    <li><Link to="/shipper">Shipper</Link></li>
+                                    <li><Link to="/shipper">Shipper</Link></li> 
+                                    <li><Link to="/allpayment">All Payment</Link></li>
                                  </ul>
                             </div>
                         </div>
@@ -85,7 +86,12 @@ function Header() {
 
                     <Link to="/shipper" 
                         onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Shipper')}}>
-                        Shipper
+                        Shipper 
+                    </Link>
+
+                    <Link to="/allpayment" 
+                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('All Payment')}}>
+                        All Payment 
                     </Link>
                 </div>
 

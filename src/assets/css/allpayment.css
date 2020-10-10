@@ -1,0 +1,14 @@
+.payment h2{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.payment h3{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.payment p{
+    color: var(--color-gry);
+    font-size: 17px;
+}

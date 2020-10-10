@@ -9,6 +9,7 @@ import RealTime from './components/RealTime';
 import YourLoads from './components/YourLoads'; 
 import LoadDetails from './components/LoadDetails';
 import Shipper from './components/Shipper';
+import AllPayment from './components/AllPayment';
 
 import { 
   BrowserRouter as Router, 
@@ -32,7 +33,8 @@ function App() {
               <Route exact path='/realtime' component={RealTime}></Route>
               <Route exact path='/yourloads' component={YourLoads}></Route> 
               <Route exact path='/loaddetails' component={LoadDetails}></Route> 
-              <Route exact path='/shipper' component={Shipper}></Route>
+              <Route exact path='/shipper' component={Shipper}></Route>AllPayment
+              <Route exact path='/allpayment' component={AllPayment}></Route>
             </Switch>
           </div>
 
