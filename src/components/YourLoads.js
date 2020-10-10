@@ -37,7 +37,7 @@ class YourLoads extends React.Component {
                                         </div>
 
                                         <div className="col-6">
-                                            <a href="#"><span class="badge badge-pill badge-success float-right px-4 py-2">Success</span></a>
+                                            <a href="#"><span class="badge badge-pill badge-success float-right px-4 py-2">Filter</span></a>
                                         </div>
                                     </div>
 
