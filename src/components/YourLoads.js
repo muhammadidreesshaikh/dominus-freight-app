@@ -1,5 +1,6 @@
 import React from 'react';
 import '../assets/css/yourloads.css';
+import firebase from '../core/firebase/firebase';
 import { Link } from 'react-router-dom';
 
 class YourLoads extends React.Component {
@@ -8,18 +9,32 @@ class YourLoads extends React.Component {
         super(props);
 
         this.state = {
-            data: [],
+            loads: [],
             loading: false
         };
     } 
 
     componentDidMount() {
-        console.log("YourLoads");
-
-        this.setState({
-            loading: true
-        });
+        this.getLoads();
     }
+
+    getLoads = () => {
+        let tempLloads = [];
+        const loadRef = firebase.ref('loads');
+    
+        loadRef.on('value', (snapshot) => {
+          const loads = snapshot.val();
+    
+          for (let id in loads) {
+            tempLloads.push({ id, ...loads[id] });
+          }
+
+          this.setState({ loads: tempLloads });
+    
+        //   console.log(this.state.loads);
+        });
+    
+    };
 
     render() {
         return(
@@ -50,21 +65,18 @@ class YourLoads extends React.Component {
                                     </div>
 
                                     <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <h3>Load 1</h3>
-                                            <p className="pt-3">Street 101, Tampa Bay, Florida</p>
-                                            <p>02-Octuber-2020  (12:00 PM)</p>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <h3>Load 2</h3>
-                                            <p className="pt-3">Street 201, Hacen Parecerlo, Florida</p>
-                                            <p>05-August-2020  (03:00 PM)</p>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <h3>Load 3</h3>
-                                            <p className="pt-3">Street 503, Encuentran Estado, Florida</p>
-                                            <p>10-March-2020  (05:00 AM)</p>
-                                        </li>
+                                        
+                                        {
+                                            this.state.loads.map((item, key) => {
+                                                return (
+                                                <li class="list-group-item" key={key}>
+                                                    <h3>{item.trucking_company}</h3>
+                                                    <p className="pt-3">Pickup: {item.pickup_location}</p>
+                                                    <p>Delivery: {item.delivery_location}</p>
+                                                </li>
+                                                )
+                                            })
+                                        }
                                     </ul>
 
                                 </div>
