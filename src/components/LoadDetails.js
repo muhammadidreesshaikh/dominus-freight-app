@@ -1,8 +1,9 @@
 import React from 'react';
 import '../assets/css/loaddetails.css';
-import { Link } from 'react-router-dom';
 
 import map from '../assets/img/map.png'
+
+import DataHolding from '../core/services/data-holding-service';
 
 class LoadDetails extends React.Component {
 
@@ -10,17 +11,22 @@ class LoadDetails extends React.Component {
         super(props);
 
         this.state = {
-            data: [],
+            data: '',
             loading: false
         };
     } 
 
     componentDidMount() {
         console.log("LoadDetails");
+        this.getDetails();    
+    }
 
-        this.setState({
-            loading: true
-        });
+    async getDetails() {
+        var details = DataHolding.setData();
+        await console.log(details);
+        this.setState({ data: details });
+
+        // console.log("getDetails > ", this.state.data);
     }
 
     render() {
@@ -43,10 +49,10 @@ class LoadDetails extends React.Component {
                                         </div>
 
                                         <h4>Pickup Time</h4>
-                                        <p>02-Octuber-2020  (12:00 PM)</p>
+                                        <p>{new Date(this.state.data.pickup_date_time).toLocaleString()} </p>
 
                                         <h4>Estimated Delivery (Google Maps)</h4>
-                                        <p>05-August-2020  (03:00 PM)</p>
+                                        <p>{new Date(this.state.data.delivery_date_time).toLocaleString()}</p>
 
                                         <h4>Live Tracking</h4>
                                         <img src={map} />

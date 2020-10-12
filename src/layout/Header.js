@@ -80,10 +80,10 @@ function Header() {
                         Your Loads
                     </Link>
 
-                    <Link to="/loaddetails" 
+                    {/* <Link to="/loaddetails" 
                         onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Details')}}>
                         Load Details
-                    </Link> 
+                    </Link>  */}
 
                     <Link to="/shipper" 
                         onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Shipper')}}>

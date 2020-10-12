@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/css/yourloads.css';
 import firebase from '../core/firebase/firebase';
 import { Link } from 'react-router-dom';
+import DataHolding from '../core/services/data-holding-service';
 
 class YourLoads extends React.Component {
 
@@ -33,8 +34,13 @@ class YourLoads extends React.Component {
     
         //   console.log(this.state.loads);
         });
-    
     };
+    
+    setData = (data) => {
+        DataHolding.getData(data);
+        
+        this.props.history.push('/loaddetails');
+    }
 
     render() {
         return(
@@ -69,11 +75,12 @@ class YourLoads extends React.Component {
                                         {
                                             this.state.loads.map((item, key) => {
                                                 return (
-                                                <li class="list-group-item" key={key}>
-                                                    <h3>{item.trucking_company}</h3>
-                                                    <p className="pt-3">Pickup: {item.pickup_location}</p>
-                                                    <p>Delivery: {item.delivery_location}</p>
-                                                </li>
+                                                    <li class="list-group-item" key={key} onClick={() => this.setData(item)}>
+                                                        <h3>{item.trucking_company}</h3>
+                                                        <p className="pt-3">Pickup: {item.pickup_location}</p>
+                                                        <p>Delivery: {item.delivery_location}</p>
+                                                    </li>
+                                                
                                                 )
                                             })
                                         }
