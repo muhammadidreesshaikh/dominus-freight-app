@@ -1,26 +1,32 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import '../assets/css/header.css'
+import Login from '../components/Login';
 // import logo from '../assets/img/logo_465x320.png'
 
-function Header() {
+function Header(props) {
 
     const [menuToggle, setMenuToggle] = useState(false);
     const [headerTitle, setHeaderTitle] = useState('');
+    const [userData, setUserData] = useState(props);
 
-    console.log(menuToggle);
+    const logout = () => {
+        localStorage.clear('user');
+        window.location.href = '/login';
+    }
 
     return(
         <div>
-
-            
-
             <div className="header">
 
                 <div className={"mobile-menu-toggle " + (menuToggle ? 'change' : '')} onClick={() => setMenuToggle(!menuToggle)}>
                     <div className="bar1"></div>
                     <div className="bar2"></div>
                     <div className="bar3"></div>
+                </div>
+
+                <div className="logout-b" onClick={() => logout()}>
+                    <i class="fas fa-power-off"></i>
                 </div>
 
                 <h4 className="header-title">{headerTitle}</h4>
@@ -54,54 +60,62 @@ function Header() {
                     </div>
                 </div>
 
-                <div className={"mobile-menu sidenav " + (menuToggle ? 'open' : 'close')}>
-                    <Link to="/login" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Login')} }>
-                        Login
-                    </Link>
-
-                    {/* <Link to="/signup" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Sign Up')}}>
-                        Sign Up
-                    </Link> */}
-
-                    <Link to="/loadconfirmation" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Confirmation')}}>
-                        Load Confirmation
-                    </Link>
-                    
-                    <Link to="/realtime" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Real Time Tracking')}}>
-                        Real Time Tracking
-                    </Link>
-
-                    <Link to="/yourloads" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Your Loads')}}>
-                        Your Loads
-                    </Link>
-
-                    {/* <Link to="/loaddetails" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Details')}}>
-                        Load Details
-                    </Link>  */}
-
-                    <Link to="/shipper" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Shipper')}}>
-                        Shipper 
-                    </Link>
-
-                    <Link to="/allpayment" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('All Payment')}}> 
-                        All Payment 
-                    </Link>
-
-                    <Link to="/setting" 
-                        onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Setting')}}> 
-                        Setting 
-                    </Link>
-
-                    
-                </div>
+                {
+                     userData.user && userData.customer ?
+                     <div className={"mobile-menu sidenav " + (menuToggle ? 'open' : 'close')}>
+                        <Link to="/login" 
+                            className={userData.user ? 'display-none' : ''}
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Login')} }>
+                            Login
+                        </Link>
+    
+                        {/* <Link to="/signup" 
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Sign Up')}}>
+                            Sign Up
+                        </Link> */}
+    
+                        <Link to="/loadconfirmation" 
+                            className={userData.customer.account_type == 'driver' ? '' : 'display-none'}
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Confirmation')}}>
+                            Load Confirmation
+                        </Link>
+                        
+                        <Link to="/realtime" 
+                            className={userData.customer.account_type == 'driver' ? '' : 'display-none'}
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Real Time Tracking')}}>
+                            Real Time Tracking
+                        </Link>
+    
+                        <Link to="/yourloads" 
+                            className={userData.customer.account_type == 'carrier' || userData.customer.account_type == 'shipper' || userData.customer.account_type == 'dominus' ? '' : 'display-none'}
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Your Loads')}}>
+                            Your Loads
+                        </Link>
+    
+                        {/* <Link to="/loaddetails" 
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Details')}}>
+                            Load Details
+                        </Link>  */}
+    
+                        {/* <Link to="/shipper" 
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Shipper')}}>
+                            Shipper 
+                        </Link> */}
+    
+                        <Link to="/allpayment" 
+                            className={userData.customer.account_type == 'shipper' ? '' : 'display-none'}
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('All Payment')}}> 
+                            All Payment 
+                        </Link>
+    
+                        <Link to="/setting"
+                            onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Setting')}}> 
+                            Setting 
+                        </Link>
+                    </div>
+                    :
+                    null
+                }
 
             </div>
         </div>

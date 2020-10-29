@@ -10,8 +10,11 @@ class Setting extends React.Component {
         super(props);
 
         this.state = {
-            data: [],
-            loading: false
+            userDetails: JSON.parse(localStorage.getItem('user')),
+            customerDetails: JSON.parse(localStorage.getItem('customer')),
+            name: '',
+            email: '',
+            contact: ''
         };
     } 
 
@@ -19,7 +22,9 @@ class Setting extends React.Component {
         console.log("Setting");
 
         this.setState({
-            loading: true
+            name: this.state.customerDetails.company_name,
+            email: this.state.customerDetails.company_email,
+            contact: this.state.customerDetails.company_contact
         });
     }
 
@@ -50,18 +55,18 @@ class Setting extends React.Component {
 
                                     <form>
                                         <div class="form-group mt-4">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control" placeholder="John Mychle" value={this.state.name} />
+                                        </div>
+
+                                        <div class="form-group mt-4">
                                             <label>Email</label>
-                                            <input type="email" class="form-control" placeholder="john@email.com" />
+                                            <input type="email" class="form-control" placeholder="john@email.com" value={this.state.email} />
                                         </div>
 
                                         <div class="form-group">
                                             <label>Contact#</label>
-                                            <input type="password" class="form-control" placeholder="+923314599326" />
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" class="form-control" placeholder="********" />
+                                            <input type="text" class="form-control" placeholder="+923314599326" value={this.state.contact} />
                                         </div>
                                         
                                         <button type="submit" className="btn btn-success w-100 mt-5 font-weight-bold">Update Profile</button>

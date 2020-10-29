@@ -145,6 +145,15 @@
 
 }
 
+.logout-b
+{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
 /* menu desktop and mobile switching on responsive  */
 
 @media only screen and (max-width: 768px) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 import Header from './layout/Header';
@@ -19,10 +19,14 @@ import {
 } from 'react-router-dom';
 
 function App() {
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [customer, setCustomer] = useState(JSON.parse(localStorage.getItem('customer')));
+
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header user={user} customer={customer} />
           
           {/* all components */} 
           <div>

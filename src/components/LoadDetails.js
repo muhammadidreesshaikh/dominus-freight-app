@@ -12,7 +12,9 @@ class LoadDetails extends React.Component {
 
         this.state = {
             data: '',
-            loading: false
+            loading: false,
+            userDetails: JSON.parse(localStorage.getItem('user')),
+            customerDetails: JSON.parse(localStorage.getItem('customer')),
         };
     } 
 
@@ -56,6 +58,23 @@ class LoadDetails extends React.Component {
 
                                         <h4>Live Tracking</h4>
                                         <img src={map} />
+
+                                        {
+                                            this.state.customerDetails.account_type == 'shipper' ?
+                                            <div>
+                                                <div class="form-check pt-4">
+                                                    <input type="checkbox" class="form-check-input" />
+                                                    <label class="form-check-label"><small>Agree on price</small></label>
+                                                </div>
+
+                                                <button type="submit" className="btn btn-success w-100 mt-2 font-weight-bold">Pay Now</button>
+
+                                                <button type="submit" className="btn btn-warning w-100 mt-4 font-weight-bold">Contact For Help</button>
+                                            </div>
+                                            :
+                                            null
+                                        }
+
                                     </div>
                                 </div>
                             </div>
