@@ -39,7 +39,7 @@ function Header() {
                             <div className="nav">
                                  <ul>
                                     <li><Link to="/login">Login</Link></li>
-                                    <li><Link to="/signup">Sign Up</Link></li>
+                                    {/* <li><Link to="/signup">Sign Up</Link></li> */}
                                     <li><Link to="/loadconfirmation">Load Confirmation</Link></li>
                                     <li><Link to="/realtime">Real Time Tracking</Link></li> 
                                     <li><Link to="/yourloads">Your Loads</Link></li>
@@ -60,10 +60,10 @@ function Header() {
                         Login
                     </Link>
 
-                    <Link to="/signup" 
+                    {/* <Link to="/signup" 
                         onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Sign Up')}}>
                         Sign Up
-                    </Link>
+                    </Link> */}
 
                     <Link to="/loadconfirmation" 
                         onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Confirmation')}}>

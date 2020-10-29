@@ -27,9 +27,9 @@ function App() {
           {/* all components */} 
           <div>
             <Switch>
-            <Route exact path='/' component={Login}></Route>
+              <Route exact path='/' component={Login}></Route>
               <Route exact path='/login' component={Login}></Route>signup
-              <Route exact path='/signup' component={Signup}></Route>
+              {/* <Route exact path='/signup' component={Signup}></Route> */}
               <Route exact path='/loadconfirmation' component={LoadConfirmation}></Route>
               <Route exact path='/realtime' component={RealTime}></Route>
               <Route exact path='/yourloads' component={YourLoads}></Route> 

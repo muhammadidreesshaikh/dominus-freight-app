@@ -55,9 +55,9 @@ class Login extends React.Component {
                                         
                                         <button type="submit" className="btn btn-primary w-100 mt-5 font-weight-bold">Login</button>
 
-                                        <div className="col-12 col-md-6 text-center pt-3">
+                                        {/* <div className="col-12 col-md-6 text-center pt-3">
                                             <Link to="/signup">Don't have an account? Sign Up</Link>
-                                        </div>
+                                        </div> */}
                                     </form>
                                 </div>
                             </div>

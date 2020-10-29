@@ -37,9 +37,13 @@ class YourLoads extends React.Component {
     };
     
     setData = (data) => {
-        DataHolding.getData(data);
-        
-        this.props.history.push('/loaddetails');
+        if (data.load_type == 'active') {
+            DataHolding.getData(data);
+            this.props.history.push('/loaddetails');
+        }
+        else {
+            alert('Load Type is not active.');
+        }
     }
 
     render() {
@@ -76,7 +80,7 @@ class YourLoads extends React.Component {
                                             this.state.loads.map((item, key) => {
                                                 return (
                                                     <li class="list-group-item" key={key} onClick={() => this.setData(item)}>
-                                                        <h3>{item.trucking_company}</h3>
+                                                        <h6>Load ID: {item.id}</h6>
                                                         <p className="pt-3">Pickup: {item.pickup_location}</p>
                                                         <p>Delivery: {item.delivery_location}</p>
                                                     </li>

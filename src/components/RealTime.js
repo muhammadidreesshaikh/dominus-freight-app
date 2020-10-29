@@ -40,7 +40,7 @@ class RealTime extends React.Component {
                                             <option>Help</option>
                                         </select>
 
-                                        <textarea class="form-control" rows="5" placeholder="Your Notes"></textarea>
+                                        <textarea class="form-control" rows="5" placeholder="Your Notes" disabled>the notes entered for the load</textarea>
                                     </div>
 
                                     <button type="submit" className="btn btn-primary w-100 mt-4 font-weight-bold">Pickup</button>
