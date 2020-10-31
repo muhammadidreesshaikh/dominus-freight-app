@@ -25,7 +25,7 @@ function Header(props) {
                     <div className="bar3"></div>
                 </div>
 
-                <div className="logout-b" onClick={() => logout()}>
+                <div onClick={() => logout()} className={!userData.user ? 'display-none' : 'logout-b'}>
                     <i class="fas fa-power-off"></i>
                 </div>
 
