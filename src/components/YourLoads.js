@@ -11,7 +11,8 @@ class YourLoads extends React.Component {
 
         this.state = {
             loads: [],
-            loading: false
+            loading: false,
+            customerData: JSON.parse(localStorage.getItem('customer'))
         };
     } 
 
@@ -20,7 +21,10 @@ class YourLoads extends React.Component {
     }
 
     getLoads = () => {
+        let account = '';
         let tempLloads = [];
+        let filteredLoads = [];
+        
         const loadRef = firebase.database().ref('loads');
     
         loadRef.on('value', (snapshot) => {
@@ -30,12 +34,29 @@ class YourLoads extends React.Component {
             tempLloads.push({ id, ...loads[id] });
           }
 
-          this.setState({ loads: tempLloads });
-    
-        //   console.log(this.state.loads);
+            //   this.setState({ loads: tempLloads });
+
+            tempLloads.map((item, i) => {
+                if (this.state.customerData.account_type == 'driver') {
+                    account = JSON.parse(item.driver).company_email;
+                }
+                if (this.state.customerData.account_type == 'shipper') {
+                    account = JSON.parse(item.shipper).company_email;
+                }
+                if (this.state.customerData.account_type == 'carrier') {
+                    account = JSON.parse(item.carrier).company_email;
+                }
+
+                if (account == this.state.customerData.company_email) {
+                    filteredLoads.push(item);
+                    console.log(item);
+                }
+            })
+
+            this.setState({ loads: filteredLoads, loading: true });
         });
     };
-    
+
     setData = (data) => {
         if (data.load_type == 'active') {
             DataHolding.getData(data);
@@ -74,21 +95,28 @@ class YourLoads extends React.Component {
                                         </select>
                                     </div>
 
-                                    <ul class="list-group">
-                                        
-                                        {
-                                            this.state.loads.map((item, key) => {
-                                                return (
-                                                    <li class="list-group-item" key={key} onClick={() => this.setData(item)}>
-                                                        <h6>Load ID: {item.id}</h6>
-                                                        <p className="pt-3">Pickup: {item.pickup_location}</p>
-                                                        <p>Delivery: {item.delivery_location}</p>
-                                                    </li>
-                                                
-                                                )
-                                            })
-                                        }
-                                    </ul>
+                                    {
+                                        this.state.loading && this.state.loads.length > 0 ?
+                                        <ul class="list-group">
+                                            {
+                                                this.state.loads.map((item, key) => {
+                                                    return (
+                                                        <li class="list-group-item" key={key} onClick={() => this.setData(item)}>
+                                                            <h6>Load ID: {item.id}</h6>
+                                                            <p className="pt-3">Pickup: {item.pickup_location}</p>
+                                                            <p>Delivery: {item.delivery_location}</p>
+                                                        </li>
+                                                    
+                                                    )
+                                                })
+                                            }
+                                        </ul>
+                                        :
+                                        <div>
+                                            { !this.state.loading ? <p className="py-4 text-center">Loading ...</p> : null}
+                                            { this.state.loading ? <p className="py-4 text-center">No Loads Found</p> : null}
+                                        </div>
+                                    }
 
                                 </div>
                             </div>

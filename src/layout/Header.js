@@ -86,8 +86,7 @@ function Header(props) {
                             Real Time Tracking
                         </Link>
     
-                        <Link to="/yourloads" 
-                            className={userData.customer.account_type == 'carrier' || userData.customer.account_type == 'shipper' || userData.customer.account_type == 'dominus' ? '' : 'display-none'}
+                        <Link to="/yourloads"
                             onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Your Loads')}}>
                             Your Loads
                         </Link>

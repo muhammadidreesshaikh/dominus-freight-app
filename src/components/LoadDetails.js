@@ -28,6 +28,10 @@ class LoadDetails extends React.Component {
         await console.log(details);
         this.setState({ data: details });
 
+        if (!this.state.data.id) {
+            this.props.history.push('/yourloads');
+        }
+
         // console.log("getDetails > ", this.state.data);
     }
 
@@ -38,6 +42,10 @@ class LoadDetails extends React.Component {
                 <div className="detail py-5">
                     <div className="container">
                         <div className="row justify-content-center">
+
+                            <div className="col-12">
+                                <a>Back</a>
+                            </div>
 
                             <div className="col-12">
                                 <div className="card">
