@@ -19,9 +19,12 @@ class Login extends React.Component {
     componentDidMount() {
         console.log("Login");
 
-        this.setState({
-            loading: true
-        });
+        this.checkUserLogin();
+    }
+
+    checkUserLogin = () => {
+        let userData = JSON.parse(localStorage.getItem('user'));
+        if(userData) this.props.history.push('/yourloads')
     }
 
     handleChange = (event) => {
