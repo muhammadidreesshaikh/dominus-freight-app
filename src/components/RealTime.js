@@ -32,15 +32,15 @@ class RealTime extends React.Component {
                                 <div className="card-body">
                                     <h2>Send Update</h2>
 
-                                    <div class="form-group">
-                                        <select class="form-control">
+                                    <div className="form-group">
+                                        <select className="form-control">
                                             <option>Accident</option>
                                             <option>Traffic</option>
                                             <option>Rest Stop</option>
                                             <option>Help</option>
                                         </select>
 
-                                        <textarea class="form-control" rows="5" placeholder="Your Notes" disabled>the notes entered for the load</textarea>
+                                        <textarea className="form-control" rows="5" placeholder="Your Notes" disabled>the notes entered for the load</textarea>
                                     </div>
 
                                     <button type="submit" className="btn btn-primary w-100 mt-4 font-weight-bold">Pickup</button>

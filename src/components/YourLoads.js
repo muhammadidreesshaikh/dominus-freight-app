@@ -24,7 +24,7 @@ class YourLoads extends React.Component {
         let account = '';
         let tempLloads = [];
         let filteredLoads = [];
-        
+
         const loadRef = firebase.database().ref('loads');
     
         loadRef.on('value', (snapshot) => {
@@ -60,7 +60,18 @@ class YourLoads extends React.Component {
     setData = (data) => {
         if (data.load_type == 'active') {
             DataHolding.getData(data);
-            this.props.history.push('/loaddetails');
+
+            if (this.state.customerData.account_type == 'driver') {
+                if (data.confirmation == true) {
+                    this.props.history.push('/realtime');
+                }
+                if (data.confirmation == false) {
+                    this.props.history.push('/loadconfirmation');
+                }
+            }
+            else {
+                this.props.history.push('/loaddetails');
+            }
         }
         else {
             alert('Load Type is not active.');
@@ -83,12 +94,12 @@ class YourLoads extends React.Component {
                                         </div>
 
                                         <div className="col-6">
-                                            <a href="#"><span class="badge badge-pill badge-success float-right px-4 py-2">Filter</span></a>
+                                            <a href="#"><span className="badge badge-pill badge-success float-right px-4 py-2">Filter</span></a>
                                         </div>
                                     </div>
 
-                                    <div class="form-group mt-5">
-                                        <select class="form-control">
+                                    <div className="form-group mt-5">
+                                        <select className="form-control">
                                             <option>Active</option>
                                             <option>Upcoming</option>
                                             <option>Past</option>
@@ -97,11 +108,11 @@ class YourLoads extends React.Component {
 
                                     {
                                         this.state.loading && this.state.loads.length > 0 ?
-                                        <ul class="list-group">
+                                        <ul className="list-group">
                                             {
                                                 this.state.loads.map((item, key) => {
                                                     return (
-                                                        <li class="list-group-item" key={key} onClick={() => this.setData(item)}>
+                                                        <li className="list-group-item" key={key} onClick={() => this.setData(item)}>
                                                             <h6>Load ID: {item.id}</h6>
                                                             <p className="pt-3">Pickup: {item.pickup_location}</p>
                                                             <p>Delivery: {item.delivery_location}</p>

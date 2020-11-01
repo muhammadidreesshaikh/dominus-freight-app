@@ -74,7 +74,7 @@ function Header(props) {
                             Sign Up
                         </Link> */}
     
-                        <Link to="/loadconfirmation" 
+                        {/* <Link to="/loadconfirmation" 
                             className={userData.customer.account_type == 'driver' ? '' : 'display-none'}
                             onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Load Confirmation')}}>
                             Load Confirmation
@@ -84,7 +84,7 @@ function Header(props) {
                             className={userData.customer.account_type == 'driver' ? '' : 'display-none'}
                             onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Real Time Tracking')}}>
                             Real Time Tracking
-                        </Link>
+                        </Link> */}
     
                         <Link to="/yourloads"
                             onClick={() => { setMenuToggle(!menuToggle); setHeaderTitle('Your Loads')}}>
