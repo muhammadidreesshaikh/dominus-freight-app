@@ -63,14 +63,14 @@ class YourLoads extends React.Component {
 
             if (this.state.customerData.account_type == 'driver') {
                 if (data.confirmation == true) {
-                    this.props.history.push('/realtime');
+                    this.props.history.push('/realtime', { data });
                 }
                 if (data.confirmation == false) {
-                    this.props.history.push('/loadconfirmation');
+                    this.props.history.push('/loadconfirmation', { data });
                 }
             }
             else {
-                this.props.history.push('/loaddetails');
+                this.props.history.push('/loaddetails', { data });
             }
         }
         else {

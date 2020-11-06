@@ -14,7 +14,8 @@ class Setting extends React.Component {
             customerDetails: JSON.parse(localStorage.getItem('customer')),
             name: '',
             email: '',
-            contact: ''
+            contact: '',
+            account_type: ''
         };
     } 
 
@@ -24,7 +25,8 @@ class Setting extends React.Component {
         this.setState({
             name: this.state.customerDetails.company_name,
             email: this.state.customerDetails.company_email,
-            contact: this.state.customerDetails.company_contact
+            contact: this.state.customerDetails.company_contact,
+            account_type: this.state.customerDetails.account_type,
         });
     }
 
@@ -47,8 +49,8 @@ class Setting extends React.Component {
 
                                         <div className="col-8">
                                             <div className="content">
-                                                <h2>John Mychle</h2>
-                                                <p>Driver/Shipper/Trucking Co.</p>
+                                                <h2 className="text-capitalize">{this.state.name}</h2>
+                                                <p className="text-capitalize">{this.state.account_type}</p>
                                             </div>
                                         </div>
                                     </div>

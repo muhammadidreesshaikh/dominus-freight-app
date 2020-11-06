@@ -1,4 +1,5 @@
 import React from 'react';
+import firebase from '../core/firebase/firebase';
 import '../assets/css/loadconfirmation.css';
 import { Link } from 'react-router-dom';
 
@@ -8,17 +9,29 @@ class LoadConfirmation extends React.Component {
         super(props);
 
         this.state = {
-            data: [],
-            loading: false
+            data: props.location.state,
+            loading: false,
+            carrier: {}
         };
     } 
 
     componentDidMount() {
-        console.log("Signup");
+        console.log("Confirmation", this.state.data);
+    }
 
-        this.setState({
-            loading: true
+    confirmLoad = (id) => {
+        firebase.database().ref('loads/' + id).update
+        ({
+          confirmation: true,
+        }, function(error) {
+          if (error) {
+            // The write failed...
+          } else {
+            // The write Success...
+          }
         });
+    
+        this.props.history.push('/yourloads');
     }
 
     render() {
@@ -32,16 +45,18 @@ class LoadConfirmation extends React.Component {
                             <div className="col-md-4">
                                 <ul class="list-group">
                                     <li class="list-group-item">
-                                        <h3>Trucking Company</h3>
-                                        <p>Al contrario del pensamiento popular texto de Lorem Ipsum no es simplemente texto aleatorio.</p>
+                                        <h3>Carrier Company</h3>
+                                        <p>{JSON.parse(this.state.data.data.carrier).company_name}</p>
                                     </li>
                                     <li class="list-group-item">
                                         <h3>Pickup Location & Time</h3>
-                                        <p>Tiene sus raices en una pieza cl´sica de la literatura del Latin.</p>
+                                        <p>{this.state.data.data.pickup_location}</p>
+                                        <small className="text-muted">{new Date(this.state.data.data.pickup_date_time).toLocaleString()}</small>
                                     </li>
                                     <li class="list-group-item">
                                         <h3>Dropoff Location & Time</h3>
-                                        <p>Si vas a utilizar un pasaje de Lorem Ipsum, necesitás estar seguro que hay nada.</p>
+                                        <p>{this.state.data.data.delivery_location}</p>
+                                        <small className="text-muted">{new Date(this.state.data.data.delivery_date_time).toLocaleString()}</small>
                                     </li>
                                 </ul>
                             </div>
@@ -52,7 +67,7 @@ class LoadConfirmation extends React.Component {
                                     <label class="form-check-label"><small>Enable GPS</small></label>
                                 </div>
 
-                                <button type="submit" className="btn btn-primary w-100 mt-5 font-weight-bold">Confirm</button>
+                                <a className="btn btn-primary w-100 mt-5 font-weight-bold" onClick={() => { this.confirmLoad(this.state.data.data.id) }}>Confirm</a>
                             </div>
 
                         </div>
