@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/css/loaddetails.css';
 
 import map from '../assets/img/map.png'
@@ -43,8 +44,8 @@ class LoadDetails extends React.Component {
                     <div className="container">
                         <div className="row justify-content-center">
 
-                            <div className="col-12">
-                                <a>Back</a>
+                            <div className="col-12 pb-3">
+                                <Link to="/yourloads" className="badge badge-pill badge-dark px-3 py-2"><i class="pr-2 fas fa-chevron-left"></i>Back</Link>
                             </div>
 
                             <div className="col-12">
