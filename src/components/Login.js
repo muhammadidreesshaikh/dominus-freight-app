@@ -33,6 +33,8 @@ class Login extends React.Component {
     }
 
     login = async() => {
+        let tempCustomers = [];
+
         await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(res => {
             if (res.user.uid) {
@@ -40,8 +42,14 @@ class Login extends React.Component {
 
                 const customerRef = firebase.database().ref('customers');
 
-                customerRef.orderByChild("company_email").equalTo(res.user.email).on("child_added", (snap) => {
-                    localStorage.setItem('customer', JSON.stringify(snap.val()));
+                customerRef.on('value', (snapshot) => {
+                    const customers = snapshot.val();
+                    for (let id in customers) {
+                      tempCustomers.push({ id, ...customers[id] });
+                    }
+
+                    let customer = tempCustomers.filter(item => item.company_email == res.user.email);
+                    localStorage.setItem('customer', JSON.stringify(customer[0]));
                     window.location.href = '/yourloads';
                 });
             }
