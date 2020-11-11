@@ -84,18 +84,28 @@ class RealTime extends React.Component {
                         <div className="row justify-content-center">
                             <div className="col-md-4">
                                 <div className="card-body">
-                                    <h2>Send Update</h2>
 
-                                    <div className="form-group">
-                                        <select className="form-control" onChange={(e) => { this.sendUpdate(e) }}>
-                                            <option value="accident">Accident</option>
-                                            <option value="traffic">Traffic</option>
-                                            <option value="rest-stop">Rest Stop</option>
-                                            <option value="help">Help</option>
-                                        </select>
+                                    {
+                                        this.state.data.data.status == "Load Created" || this.state.data.data.status == "pickup" ?
+                                        <div>
+                                            <h2>Send Update</h2>
+                                            <div className="form-group">
+                                                <select className="form-control" onChange={(e) => { this.sendUpdate(e) }}>
+                                                    <option value="accident">Accident</option>
+                                                    <option value="traffic">Traffic</option>
+                                                    <option value="rest-stop">Rest Stop</option>
+                                                    <option value="help">Help</option>
+                                                </select>
 
-                                        <textarea className="form-control" rows="5" placeholder="Your Notes" disabled>the notes entered for the load</textarea>
-                                    </div>
+                                                <textarea className="form-control" rows="5" placeholder="Your Notes" disabled>the notes entered for the load</textarea>
+                                            </div>
+                                        </div>
+                                        :
+                                        <div className="text-center">
+                                            <h3 className="text-success pb-2"><i class="fas fa-check-circle"></i></h3>
+                                            <p>Delivered Successfully</p>
+                                        </div>
+                                    }
 
                                     {
                                         this.state.data.data.status == "Load Created" ?
@@ -117,6 +127,8 @@ class RealTime extends React.Component {
                                         :
                                         null
                                     }
+
+                                    <Link to="/yourloads" className="d-block text-center pt-3"><i class="fas fa-chevron-left"></i> Back to your Loads</Link>
                                 </div>
                             </div>
                         </div>
