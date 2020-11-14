@@ -33,6 +33,7 @@ class Login extends React.Component {
     }
 
     login = async() => {
+        this.setState({ loading: true });
         let tempCustomers = [];
 
         await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -51,6 +52,7 @@ class Login extends React.Component {
                     let customer = tempCustomers.filter(item => item.company_email == res.user.email);
                     localStorage.setItem('customer', JSON.stringify(customer[0]));
                     window.location.href = '/yourloads';
+                    this.setState({ loading: false });
                 });
             }
         })
@@ -87,12 +89,17 @@ class Login extends React.Component {
                                                     <label class="form-check-label"><small>Remember Me</small></label>
                                                 </div>
                                             </div>
-                                            <div className="col-6 col-md-6 float-right">
-                                                <a href="#"><small>Forget Password?</small></a>
+                                            <div className="col-6 col-md-6">
+                                                <a className="d-block text-right"><small>Forget Password?</small></a>
                                             </div>
                                         </div>
                                         
-                                        <a className="btn btn-primary w-100 mt-5 font-weight-bold" onClick={ () => {this.login()} }>Login</a>
+                                        {
+                                            !this.state.loading ?
+                                            <a className="btn btn-primary w-100 mt-5 font-weight-bold" onClick={ () => {this.login()} }>Login</a>
+                                            :
+                                            <p className="text-center mt-5"><b>Loading ...</b></p>
+                                        }
 
                                         {/* <div className="col-12 col-md-6 text-center pt-3">
                                             <Link to="/signup">Don't have an account? Sign Up</Link>
