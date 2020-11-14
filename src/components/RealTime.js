@@ -64,6 +64,7 @@ class RealTime extends React.Component {
         firebase.database().ref('loads/' + id).update
         ({
           status: 'delivered',
+          load_type: 'past',
         }, function(error) {
           if (error) {
             // The write failed...
