@@ -56,3 +56,7 @@ a{
   margin: auto;
   border-radius: 7px;
 }
+
+.display-none {
+  display: none !important;
+}

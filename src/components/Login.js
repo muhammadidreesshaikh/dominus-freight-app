@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/css/login.css';
 import { Link } from 'react-router-dom';
+import firebase from '../core/firebase/firebase';
 
 class Login extends React.Component {
 
@@ -9,17 +10,57 @@ class Login extends React.Component {
 
         this.state = {
             data: [],
-            loading: false
+            loading: false,
+            email: '',
+            password: '',
         };
     } 
 
     componentDidMount() {
         console.log("Login");
 
-        this.setState({
-            loading: true
-        });
+        this.checkUserLogin();
     }
+
+    checkUserLogin = () => {
+        let userData = JSON.parse(localStorage.getItem('user'));
+        if(userData) this.props.history.push('/yourloads')
+    }
+
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value });
+        console.log(this.state);
+    }
+
+    login = async() => {
+        this.setState({ loading: true });
+        let tempCustomers = [];
+
+        await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        .then(res => {
+            if (res.user.uid) {
+                localStorage.setItem('user', JSON.stringify(res.user));
+
+                const customerRef = firebase.database().ref('customers');
+
+                customerRef.on('value', (snapshot) => {
+                    const customers = snapshot.val();
+                    for (let id in customers) {
+                      tempCustomers.push({ id, ...customers[id] });
+                    }
+
+                    let customer = tempCustomers.filter(item => item.company_email == res.user.email);
+                    localStorage.setItem('customer', JSON.stringify(customer[0]));
+                    window.location.href = '/yourloads';
+                    this.setState({ loading: false });
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
 
     render() {
         return(
@@ -33,12 +74,12 @@ class Login extends React.Component {
                                     <form>
                                         <div class="form-group">
                                             <label>Email address</label>
-                                            <input type="email" class="form-control" placeholder="Enter email" />
+                                            <input type="email" class="form-control" placeholder="Enter email" name="email" value={this.state.email} onChange={(event) => this.handleChange(event)}/>
                                             <small class="form-text text-muted">We'll never share your email with anyone else.</small>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" placeholder="Password" />
+                                            <input type="password" name="password" className="form-control" value={this.state.password} onChange={(event) => this.handleChange(event)} placeholder="Password" />
                                         </div>
                                         
                                         <div className="row">
@@ -48,16 +89,21 @@ class Login extends React.Component {
                                                     <label class="form-check-label"><small>Remember Me</small></label>
                                                 </div>
                                             </div>
-                                            <div className="col-6 col-md-6 float-right">
-                                                <a href="#"><small>Forget Password?</small></a>
+                                            <div className="col-6 col-md-6">
+                                                <a className="d-block text-right"><small>Forget Password?</small></a>
                                             </div>
                                         </div>
                                         
-                                        <button type="submit" className="btn btn-primary w-100 mt-5 font-weight-bold">Login</button>
+                                        {
+                                            !this.state.loading ?
+                                            <a className="btn btn-primary w-100 mt-5 font-weight-bold" onClick={ () => {this.login()} }>Login</a>
+                                            :
+                                            <p className="text-center mt-5"><b>Loading ...</b></p>
+                                        }
 
-                                        <div className="col-12 col-md-6 text-center pt-3">
+                                        {/* <div className="col-12 col-md-6 text-center pt-3">
                                             <Link to="/signup">Don't have an account? Sign Up</Link>
-                                        </div>
+                                        </div> */}
                                     </form>
                                 </div>
                             </div>
